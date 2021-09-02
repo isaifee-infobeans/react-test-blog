@@ -1,4 +1,5 @@
 import React from "react";
+import parseHtml from "html-react-parser";
 
 const Post = ({ post }) => {
   return (
@@ -13,17 +14,17 @@ const Post = ({ post }) => {
         <div className="date">
           <strong>Publish Date</strong>:
           <span itemProp="datePublished">
-            <time dateTime={post.publishDate}>{post.publishDate}</time>
+            <time dateTime={post.publishDate}> {post.publishDate}</time>
           </span>
         </div>
 
         <div className="author">
-          <strong>Author</strong>:<span itemProp="author">{post.author}</span>
+          <strong>Author</strong>:<span itemProp="author"> {post.author}</span>
         </div>
       </header>
 
       <div itemProp="articleBody" className="content">
-        {post.body}
+        {parseHtml(post.body)}
       </div>
     </article>
   );
