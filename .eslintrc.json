@@ -1,0 +1,38 @@
+module.exports = {
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "prettier/prettier": "error",
+        "no-unused-vars": "warn",
+        "import/extensions": [
+            "warn",
+            {
+                "js": "never",
+                "jsx": "never"
+            }
+        ],
+        "react/prop-types": 0,
+        "no-param-reassign": [
+            "error",
+            {
+                "props": false
+            }
+        ]
+    },
+};
