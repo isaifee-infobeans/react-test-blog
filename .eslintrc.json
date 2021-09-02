@@ -1,4 +1,4 @@
-module.exports = {
+{
     "env": {
         "browser": true,
         "es2021": true
@@ -15,18 +15,12 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "prettier"
     ],
     "rules": {
         "prettier/prettier": "error",
         "no-unused-vars": "warn",
-        "import/extensions": [
-            "warn",
-            {
-                "js": "never",
-                "jsx": "never"
-            }
-        ],
         "react/prop-types": 0,
         "no-param-reassign": [
             "error",
@@ -34,5 +28,5 @@ module.exports = {
                 "props": false
             }
         ]
-    },
-};
+    }
+}
