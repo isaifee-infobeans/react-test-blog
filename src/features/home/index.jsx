@@ -8,10 +8,10 @@ const Home = () => {
   const session = useSelector(selectSession);
 
   return (
-    <>
+    <div className="home">
       <section className="welcome logged-in">{`Welcome ${session.displayName}!`}</section>
       <Posts />
-    </>
+    </div>
   );
 };
 
