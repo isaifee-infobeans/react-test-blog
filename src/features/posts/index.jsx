@@ -5,7 +5,7 @@ import { fetchPostsAsync } from "../posts/postsSlice";
 
 /**
  * Component to fetch the list of posts from the Wordpress URL.
- * @returns {Posts} renders the List component which contains list of posts.
+ * @returns {List}
  */
 const Posts = () => {
   const dispatch = useDispatch();

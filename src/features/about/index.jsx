@@ -5,7 +5,7 @@ import { fetchAboutPageAsync, selectAboutPage } from "../about/aboutSlice";
 
 /**
  * About page component to show `about us` section from the Wordpress URL
- * @returns {About} renders the title and content of `about us` page.
+ * @returns {div}
  */
 const About = () => {
   const dispatch = useDispatch();

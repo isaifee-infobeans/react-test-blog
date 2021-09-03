@@ -8,7 +8,7 @@ import Form from "./components/Form";
 
 /**
  * Login page component for login form
- * @returns {Login} returns login form with username and password fields.
+ * @returns {Form}
  */
 const Login = () => {
   const dispatch = useDispatch();

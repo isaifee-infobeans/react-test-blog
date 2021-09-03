@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 /**
  * Post component to show the details of the post.
- * @returns {Post} renders the title, content, author etc. other details of the post.
+ * @returns {article}
  */
 const Post = ({ post }) => {
   return (

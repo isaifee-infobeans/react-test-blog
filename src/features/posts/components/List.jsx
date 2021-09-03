@@ -6,7 +6,7 @@ import "./List.css";
 
 /**
  * List component to render the list of posts.
- * @returns {List} renders the list of Post components.
+ * @returns {div}
  */
 const List = () => {
   const posts = useSelector(selectPosts);

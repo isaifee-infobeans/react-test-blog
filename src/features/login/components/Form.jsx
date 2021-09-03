@@ -3,7 +3,7 @@ import "./Form.css";
 
 /**
  * Login Form component to render the form
- * @returns {Form} returns the login form with username and password fields.
+ * @returns {div form}
  */
 const Form = ({ onSubmit, errors }) => {
   const [username, setUsername] = useState("");
