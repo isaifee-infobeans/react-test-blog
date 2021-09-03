@@ -4,6 +4,10 @@ import "./index.css";
 import Post from "./components/Post";
 import { fetchPostsAsync, selectPosts } from "../posts/postsSlice";
 
+/**
+ * Posts component to render the list of posts.
+ * @returns {Posts} renders the list of Post components.
+ */
 const Posts = () => {
   const dispatch = useDispatch();
   const posts = useSelector(selectPosts);

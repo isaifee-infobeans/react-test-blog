@@ -9,6 +9,11 @@ import {
 } from "../app/sessionSlice";
 import { validateAuthToken } from "../api/authApi";
 
+/**
+ * Wrapper component for the protected routes.
+ * @param {children} - Array of child components which gets rendered after authentication.
+ * @returns {render children} after successful authentication renders children
+ */
 const Authenticated = ({ children }) => {
   const session = useSelector(selectSession);
   const history = useHistory();

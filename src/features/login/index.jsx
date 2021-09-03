@@ -8,6 +8,10 @@ import {
 } from "../../app/sessionSlice";
 import "./index.css";
 
+/**
+ * Login page component for login form
+ * @returns {Login} returns login form with username and password fields.
+ */
 const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();

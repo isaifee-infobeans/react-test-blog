@@ -1,6 +1,11 @@
 import React from "react";
 import parseHtml from "html-react-parser";
+import PropTypes from "prop-types";
 
+/**
+ * Post component to show the details of the post.
+ * @returns {Post} renders the title, content, author etc. other details of the post.
+ */
 const Post = ({ post }) => {
   return (
     <article
@@ -31,3 +36,16 @@ const Post = ({ post }) => {
 };
 
 export default Post;
+
+Post.propTypes = {
+  post: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    publishDate: PropTypes.string,
+    author: PropTypes.string,
+    body: PropTypes.string,
+  }),
+};
+
+Post.defaultProps = {
+  post: {},
+};

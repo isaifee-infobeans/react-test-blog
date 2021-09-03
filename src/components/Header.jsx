@@ -4,6 +4,10 @@ import { useSelector } from "react-redux";
 import "./Header.css";
 import { selectSession } from "../app/sessionSlice";
 
+/**
+ * Header component to show navigation bar and menus
+ * @returns {header} renders the menus based on the authentication status
+ */
 const Header = () => {
   const session = useSelector(selectSession);
 
