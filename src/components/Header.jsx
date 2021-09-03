@@ -1,8 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./Header.css";
+import { selectSession } from "../app/sessionSlice";
 
 const Header = () => {
+  const session = useSelector(selectSession);
+
+  const authenticatedMenus = (
+    <>
+      <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1912">
+        <Link to="/"> Home </Link>
+      </li>
+      <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1915">
+        <Link to="/about"> About </Link>
+      </li>
+      <li className="logged-in menu-item menu-item-type-custom menu-item-object-custom menu-item-1915">
+        <Link to="/logout"> Logout </Link>
+      </li>
+    </>
+  );
+
+  const unauthenticatedMenus = (
+    <li className="logged-out menu-item menu-item-type-custom menu-item-object-custom menu-item-1915">
+      <Link to="/login"> Login </Link>
+    </li>
+  );
+
   return (
     <header
       className="site-header"
@@ -34,18 +58,7 @@ const Header = () => {
         </a>
 
         <ul id="menu-main-nav" className="primary-menu">
-          <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1912">
-            <Link to="/"> Home </Link>
-          </li>
-          <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1915">
-            <Link to="/about"> About </Link>
-          </li>
-          <li className="logged-out menu-item menu-item-type-custom menu-item-object-custom menu-item-1915">
-            <Link to="/login"> Login </Link>
-          </li>
-          <li className="logged-in menu-item menu-item-type-custom menu-item-object-custom menu-item-1915">
-            <Link to="/logout"> Logout </Link>
-          </li>
+          {session.isAuthenticated ? authenticatedMenus : unauthenticatedMenus}
         </ul>
       </nav>
     </header>
