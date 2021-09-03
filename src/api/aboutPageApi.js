@@ -1,7 +1,5 @@
 import axios from "axios";
-/**
- * passed params in api to support query params.
- */
+
 const fetchAboutPage = async () =>
   new Promise((resolve, reject) => {
     axios

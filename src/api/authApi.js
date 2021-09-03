@@ -1,7 +1,5 @@
 import axios from "axios";
-/**
- * passed params in api to support query params.
- */
+
 const fetchAuthToken = async (params) =>
   new Promise((resolve, reject) => {
     axios
@@ -17,18 +15,10 @@ const fetchAuthToken = async (params) =>
       });
   });
 
-export const validateAuthToken = async (token) =>
+export const validateAuthToken = async () =>
   new Promise((resolve, reject) => {
     axios
-      .post(
-        "https://js1.10up.com/wp-json/jwt-auth/v1/token/validate",
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      .post("https://js1.10up.com/wp-json/jwt-auth/v1/token/validate")
       .then((response) => {
         resolve(response.data);
       })
