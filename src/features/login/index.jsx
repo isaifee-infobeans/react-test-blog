@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import {
-  setSession,
-  fetchAuthTokenAsync,
-  setAuthToken,
-} from "../../app/sessionSlice";
+import { setSession, setAuthToken } from "../../app/sessionSlice";
+import fetchAuthToken from "../../api/authApi";
 import Form from "./components/Form";
 
 /**
@@ -18,7 +15,7 @@ const Login = () => {
   const [errors, setErrors] = useState("");
 
   const handleSubmit = (params) => {
-    fetchAuthTokenAsync(params)
+    fetchAuthToken(params)
       .then((data) => {
         setAuthToken(data.token);
         dispatch(

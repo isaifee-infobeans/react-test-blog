@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import fetchAuthToken from "../api/authApi";
 
 const initialState = {
   session: {
@@ -7,8 +6,6 @@ const initialState = {
     isAuthenticated: false,
   },
 };
-
-export const fetchAuthTokenAsync = (params) => fetchAuthToken(params);
 
 const sessionSlice = createSlice({
   name: "session",
