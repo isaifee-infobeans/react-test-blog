@@ -17,6 +17,7 @@ const App = () => {
           <Login />
         </Route>
 
+        {/* A wrapper component for protected paths */}
         <Authenticated>
           <Route path="/about" component={About} />
           <Route path="/logout" component={Logout} />
