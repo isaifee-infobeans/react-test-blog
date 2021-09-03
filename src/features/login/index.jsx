@@ -15,6 +15,7 @@ const Login = () => {
     event.preventDefault();
     fetchAuthTokenAsync({ username: username, password: password })
       .then((data) => {
+        sessionStorage.setItem("authToken", data.token);
         dispatch(
           sessionActions.setSession({
             username: username,

@@ -1,11 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import {
-  selectSession,
-  fetchAuthTokenAsync,
-  sessionActions,
-} from "../app/sessionSlice";
+import { selectSession, sessionActions } from "../app/sessionSlice";
+import { validateAuthToken } from "../api/authApi";
 
 const Authenticated = ({ children }) => {
   const session = useSelector(selectSession);
@@ -15,12 +12,17 @@ const Authenticated = ({ children }) => {
   useEffect(() => {
     if (session.isAuthenticated) return;
 
-    fetchAuthTokenAsync()
-      .then((data) => {
-        console.log("DATA", data);
+    const token = sessionStorage.getItem("authToken");
+    if (!token) {
+      history.push("/login");
+      return;
+    }
+
+    validateAuthToken(token)
+      .then(() => {
         dispatch(
           sessionActions.setSession({
-            username: "",
+            displayName: "",
             isAuthenticated: true,
           })
         );
