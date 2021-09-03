@@ -1,12 +1,11 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./index.css";
-import Post from "./components/Post";
+import List from "./components/List";
 import { fetchPostsAsync, selectPosts } from "../posts/postsSlice";
 
 /**
- * Posts component to render the list of posts.
- * @returns {Posts} renders the list of Post components.
+ * Component to fetch the list of posts from the Wordpress URL.
+ * @returns {Posts} renders the List component which contains list of posts.
  */
 const Posts = () => {
   const dispatch = useDispatch();
@@ -16,15 +15,7 @@ const Posts = () => {
     dispatch(fetchPostsAsync());
   }, []);
 
-  const postData = useMemo(() => {
-    return posts.map((post) => <Post key={post.id} post={post} />);
-  }, [posts]);
-
-  return (
-    <div itemScope itemType="https://schema.org/Blog">
-      {postData}
-    </div>
-  );
+  return <List posts={posts} />;
 };
 
 export default Posts;
