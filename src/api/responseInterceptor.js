@@ -1,5 +1,5 @@
 import axios from "axios";
-import { sessionActions } from "../app/sessionSlice";
+import { setSession } from "../app/sessionSlice";
 
 export default {
   setAuthInterceptors: (store) => {
@@ -7,7 +7,7 @@ export default {
       (response) => response,
       (error) => {
         if (error.response.status === 401) {
-          store.dispatch(sessionActions.setSession({ isAuthenticated: false }));
+          store.dispatch(setSession({ isAuthenticated: false }));
         }
         return Promise.reject(error);
       }

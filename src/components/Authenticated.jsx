@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
   selectSession,
-  sessionActions,
+  setSession,
   getAuthToken,
   deleteAuthToken,
 } from "../app/sessionSlice";
@@ -31,7 +31,7 @@ const Authenticated = ({ children }) => {
     validateAuthToken()
       .then(() => {
         dispatch(
-          sessionActions.setSession({
+          setSession({
             displayName: "",
             isAuthenticated: true,
           })

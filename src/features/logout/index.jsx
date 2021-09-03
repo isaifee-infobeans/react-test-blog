@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { sessionActions, deleteAuthToken } from "../../app/sessionSlice";
+import { setSession, deleteAuthToken } from "../../app/sessionSlice";
 
 /**
  * Logout page component to logout and destroy the JWT session token.
@@ -13,7 +13,7 @@ const Logout = () => {
   useEffect(() => {
     deleteAuthToken();
     dispatch(
-      sessionActions.setSession({
+      setSession({
         isAuthenticated: false,
       })
     );

@@ -27,5 +27,5 @@ export const deleteAuthToken = () => sessionStorage.removeItem("authToken");
 
 export const selectSession = (state) => state.session.session;
 
-export const sessionActions = sessionSlice.actions;
+export const setSession = sessionSlice.actions.setSession;
 export default sessionSlice.reducer;

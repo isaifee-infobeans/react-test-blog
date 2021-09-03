@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
-  sessionActions,
+  setSession,
   fetchAuthTokenAsync,
   setAuthToken,
 } from "../../app/sessionSlice";
@@ -22,7 +22,7 @@ const Login = () => {
       .then((data) => {
         setAuthToken(data.token);
         dispatch(
-          sessionActions.setSession({
+          setSession({
             username: params.username,
             displayName: data.user_display_name,
             email: data.user_email,
