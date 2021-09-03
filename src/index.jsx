@@ -7,6 +7,9 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "./app/store";
 import "./api/requestInterceptor";
+import responseInterceptor from "./api/responseInterceptor";
+
+responseInterceptor.setAuthInterceptors(store);
 
 ReactDOM.render(
   <React.StrictMode>
