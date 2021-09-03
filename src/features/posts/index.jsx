@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./index.css";
 import Post from "./components/Post";
@@ -12,11 +12,13 @@ const Posts = () => {
     dispatch(fetchPostsAsync());
   }, []);
 
+  const postData = useMemo(() => {
+    return posts.map((post) => <Post key={post.id} post={post} />);
+  }, [posts]);
+
   return (
     <div itemScope itemType="https://schema.org/Blog">
-      {posts.map((post) => (
-        <Post key={post.id} post={post} />
-      ))}
+      {postData}
     </div>
   );
 };
