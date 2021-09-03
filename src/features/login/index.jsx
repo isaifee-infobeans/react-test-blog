@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { sessionActions, fetchAuthTokenAsync } from "../../app/sessionSlice";
+import {
+  sessionActions,
+  fetchAuthTokenAsync,
+  setAuthToken,
+} from "../../app/sessionSlice";
 import "./index.css";
 
 const Login = () => {
@@ -15,7 +19,7 @@ const Login = () => {
     event.preventDefault();
     fetchAuthTokenAsync({ username: username, password: password })
       .then((data) => {
-        sessionStorage.setItem("authToken", data.token);
+        setAuthToken(data.token);
         dispatch(
           sessionActions.setSession({
             username: username,

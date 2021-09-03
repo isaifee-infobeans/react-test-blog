@@ -8,8 +8,8 @@ const initialState = {
 
 export const fetchPostsAsync = createAsyncThunk(
   "posts/fetchPosts",
-  async (params) => {
-    const response = await fetchPosts(params);
+  async () => {
+    const response = await fetchPosts();
     return response;
   }
 );

@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { selectSession, sessionActions } from "../app/sessionSlice";
+import {
+  selectSession,
+  sessionActions,
+  getAuthToken,
+} from "../app/sessionSlice";
 import { validateAuthToken } from "../api/authApi";
 
 const Authenticated = ({ children }) => {
@@ -12,13 +16,13 @@ const Authenticated = ({ children }) => {
   useEffect(() => {
     if (session.isAuthenticated) return;
 
-    const token = sessionStorage.getItem("authToken");
-    if (!token) {
+    const authToken = getAuthToken();
+    if (!authToken) {
       history.push("/login");
       return;
     }
 
-    validateAuthToken(token)
+    validateAuthToken(authToken)
       .then(() => {
         dispatch(
           sessionActions.setSession({

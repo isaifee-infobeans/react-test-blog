@@ -20,6 +20,10 @@ const sessionSlice = createSlice({
   },
 });
 
+export const getAuthToken = () => sessionStorage.getItem("authToken");
+export const setAuthToken = (token) =>
+  sessionStorage.setItem("authToken", token);
+
 export const selectSession = (state) => state.session.session;
 
 export const sessionActions = sessionSlice.actions;
