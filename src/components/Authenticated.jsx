@@ -5,6 +5,7 @@ import {
   selectSession,
   sessionActions,
   getAuthToken,
+  deleteAuthToken,
 } from "../app/sessionSlice";
 import { validateAuthToken } from "../api/authApi";
 
@@ -22,7 +23,7 @@ const Authenticated = ({ children }) => {
       return;
     }
 
-    validateAuthToken(authToken)
+    validateAuthToken()
       .then(() => {
         dispatch(
           sessionActions.setSession({
@@ -32,6 +33,7 @@ const Authenticated = ({ children }) => {
         );
       })
       .catch(() => {
+        deleteAuthToken();
         history.push("/login");
       });
   }, [session]);
