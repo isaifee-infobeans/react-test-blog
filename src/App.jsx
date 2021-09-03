@@ -6,6 +6,7 @@ import Home from "./features/home";
 import About from "./features/about";
 import Authenticated from "./components/Authenticated";
 import Login from "./features/login";
+import Logout from "./features/logout";
 
 const App = () => {
   return (
@@ -17,12 +18,9 @@ const App = () => {
         </Route>
 
         <Authenticated>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
+          <Route path="/about" component={About} />
+          <Route path="/logout" component={Logout} />
+          <Route exact path="/" component={Home} />
         </Authenticated>
       </Switch>
     </div>

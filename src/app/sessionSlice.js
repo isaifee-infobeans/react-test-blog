@@ -23,6 +23,7 @@ const sessionSlice = createSlice({
 export const getAuthToken = () => sessionStorage.getItem("authToken");
 export const setAuthToken = (token) =>
   sessionStorage.setItem("authToken", token);
+export const deleteAuthToken = () => sessionStorage.removeItem("authToken");
 
 export const selectSession = (state) => state.session.session;
 
