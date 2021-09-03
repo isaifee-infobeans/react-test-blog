@@ -6,7 +6,7 @@ import { selectSession } from "../../app/sessionSlice";
 
 /**
  * Home component to show the list of posts
- * @returns {Home} renders the list of posts fetched from the Wordpress URL.
+ * @returns {div}
  */
 const Home = () => {
   const session = useSelector(selectSession);

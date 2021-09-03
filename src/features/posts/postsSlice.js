@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import fetchPosts from "../../api/postsApi";
 
 const initialState = {
-  posts: [],
+  data: [],
   status: "idle",
 };
 
@@ -13,6 +13,7 @@ export const fetchPostsAsync = createAsyncThunk(
     return response;
   }
 );
+
 export const postsSlice = createSlice({
   name: "posts",
   initialState,
@@ -22,7 +23,7 @@ export const postsSlice = createSlice({
     },
     [fetchPostsAsync.fulfilled]: (state, action) => {
       state.status = "idle";
-      state.posts = action.payload.map((post) => ({
+      state.data = action.payload.map((post) => ({
         id: post.id,
         title: post.title.rendered,
         publishDate: post.date,
@@ -37,5 +38,5 @@ export const postsSlice = createSlice({
   },
 });
 
-export const selectPosts = (state) => state.posts.posts;
+export const selectPosts = (state) => state.posts.data;
 export default postsSlice.reducer;
