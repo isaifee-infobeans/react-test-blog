@@ -11,3 +11,6 @@
 .post .content {
 	margin-top: 1em;
 }
+.post .content img {
+	width: 90%;
+}
