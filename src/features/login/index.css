@@ -1,3 +1,6 @@
 .login form > div {
 	margin-bottom: 1em;
 }
+p.error {
+	color: red;
+}
