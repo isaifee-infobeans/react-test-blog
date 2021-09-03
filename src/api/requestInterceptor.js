@@ -1,18 +1,20 @@
 import axios from "axios";
-import { getAuthToken } from "../app/sessionSlice";
 
-axios.interceptors.request.use(
-  (config) => {
-    const { origin } = new URL(config.url);
-    const allowedOrigins = ["https://js1.10up.com"];
-    const token = getAuthToken();
+export default {
+  setAuthInterceptors: (authToken) => {
+    axios.interceptors.request.use(
+      (config) => {
+        const { origin } = new URL(config.url);
+        const allowedOrigins = ["https://js1.10up.com"];
 
-    if (allowedOrigins.includes(origin) && token) {
-      config.headers.authorization = `Bearer ${token}`;
-    }
-    return config;
+        if (allowedOrigins.includes(origin) && authToken) {
+          config.headers.authorization = `Bearer ${authToken}`;
+        }
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      }
+    );
   },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+};

@@ -1,12 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import {
-  selectSession,
-  setSession,
-  getAuthToken,
-  deleteAuthToken,
-} from "../app/sessionSlice";
+import { useCookies } from "react-cookie";
+import { selectSession, setSession } from "../app/sessionSlice";
 import { validateAuthToken } from "../api/authApi";
 
 /**
@@ -18,11 +14,11 @@ const Authenticated = ({ children }) => {
   const session = useSelector(selectSession);
   const history = useHistory();
   const dispatch = useDispatch();
+  const [authToken, , deleteAuthToken] = useCookies(["authToken"]);
 
   useEffect(() => {
     if (session.isAuthenticated) return;
 
-    const authToken = getAuthToken();
     if (!authToken) {
       history.push("/login");
       return;
@@ -38,7 +34,7 @@ const Authenticated = ({ children }) => {
         );
       })
       .catch(() => {
-        deleteAuthToken();
+        deleteAuthToken("authToken");
         history.push("/login");
       });
   }, [session]);

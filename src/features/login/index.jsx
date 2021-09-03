@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { setSession, setAuthToken } from "../../app/sessionSlice";
+import { useCookies } from "react-cookie";
+import { setSession } from "../../app/sessionSlice";
 import fetchAuthToken from "../../api/authApi";
 import Form from "./components/Form";
 
@@ -13,11 +14,12 @@ const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [errors, setErrors] = useState("");
+  const [, setAuthToken] = useCookies(["authToken"]);
 
   const handleSubmit = (params) => {
     fetchAuthToken(params)
       .then((data) => {
-        setAuthToken(data.token);
+        setAuthToken("authToken", data.token);
         dispatch(
           setSession({
             username: params.username,

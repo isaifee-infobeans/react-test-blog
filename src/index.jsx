@@ -2,22 +2,24 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { CookiesProvider } from "react-cookie";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "./app/store";
-import "./api/requestInterceptor";
 import responseInterceptor from "./api/responseInterceptor";
 
 responseInterceptor.setAuthInterceptors(store);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
+    <CookiesProvider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    </CookiesProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
