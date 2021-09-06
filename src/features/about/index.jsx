@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import sanitizeHtml from "sanitize-html";
 import parseHtml from "html-react-parser";
 import { fetchAboutPageAsync, selectAboutPage } from "../about/aboutSlice";
 
@@ -17,7 +18,7 @@ const About = () => {
 
   return (
     <div>
-      <h1>{parseHtml(aboutPage.title)}</h1>
+      <h1>{parseHtml(sanitizeHtml(aboutPage.title))}</h1>
 
       <div className="page"> {parseHtml(aboutPage.body)} </div>
     </div>

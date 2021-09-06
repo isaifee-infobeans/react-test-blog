@@ -1,4 +1,5 @@
 import React from "react";
+import sanitizeHtml from "sanitize-html";
 import parseHtml from "html-react-parser";
 import PropTypes from "prop-types";
 
@@ -29,7 +30,7 @@ const Post = ({ post }) => {
       </header>
 
       <div itemProp="articleBody" className="content">
-        {parseHtml(post.body)}
+        {parseHtml(sanitizeHtml(post.body))}
       </div>
     </article>
   );
